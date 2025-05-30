@@ -5,9 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>eu.oberon.oss</groupId>
-    <artifactId>test-util-random-data-generator</artifactId>
+    <artifactId>random-data-generator</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
+
+    <modules>
+        <module>coverage</module>
+        <module>base</module>
+    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
