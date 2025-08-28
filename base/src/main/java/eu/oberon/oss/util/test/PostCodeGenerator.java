@@ -21,14 +21,9 @@ public class PostCodeGenerator extends AbstractBaseGenerator<String> {
     public PostCodeGenerator() {
         super(true);
         generator = new TextGenerator(getRandomGenerator());
-        validFirstChar = TextGenerator.getBuilder()
-                .setMaxLength(1)
-                .addCharacterList(ALPHABETICAL)
-                .build();
-        validSecondChar = TextGenerator.getBuilder()
-                .setMaxLength(1)
-                .addCharacterList(ALPHABETICAL.replace("S", ""))
-                .build();
+        validFirstChar = TextGenerator.getBuilder().setMaxLength(1).addCharacterList(ALPHABETICAL).build();
+        validSecondChar =
+                TextGenerator.getBuilder().setMaxLength(1).addCharacterList(ALPHABETICAL.replaceAll("[ADS]", "")).build();
 
         invalidChar = TextGenerator.getBuilder()
                 .setMaxLength(1)

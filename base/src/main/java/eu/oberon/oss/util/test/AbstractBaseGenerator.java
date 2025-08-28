@@ -22,7 +22,7 @@ public abstract class AbstractBaseGenerator<S> implements BaseGenerator<S> {
      * Creates a base generator instance, using a {@link SecureRandom} randomizer
      */
     protected AbstractBaseGenerator() {
-        randomGenerator = new SecureRandom();
+        this(true);
     }
 
     /**
