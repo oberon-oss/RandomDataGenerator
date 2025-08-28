@@ -10,5 +10,10 @@
     </parent>
 
     <artifactId>random-data-generator-base</artifactId>
-
+    <dependencies>
+        <dependency>
+            <groupId>eu.oberon.oss.tools</groupId>
+            <artifactId>validator-utils-base</artifactId>
+        </dependency>
+    </dependencies>
 </project>

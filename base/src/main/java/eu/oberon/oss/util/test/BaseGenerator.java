@@ -1,33 +1,36 @@
 package eu.oberon.oss.util.test;
 
-import lombok.Getter;
+import java.util.List;
 
-import java.security.SecureRandom;
-import java.util.Random;
-import java.util.random.RandomGenerator;
+/**
+ * Basic generator contract. allows
+ *
+ * @param <S>
+ *
+ * @author TigerLilly64
+ * @since 1.0.0
+ */
+public interface BaseGenerator<S> {
+    /**
+     * Generates a single value.
+     *
+     * @param generateValidItem Specifies if valid (<b>true</b>) or invalid (<b>false</b>) data must be generated
+     *
+     * @return The generated value.
+     *
+     * @since 1.0.0
+     */
+    S generateSingleValue(boolean generateValidItem);
 
-public class BaseGenerator {
-    @Getter
-    private final RandomGenerator randomGenerator;
-
-    public BaseGenerator() {
-        randomGenerator = new Random();
-    }
-
-    public BaseGenerator(boolean useSecureRandom) {
-        randomGenerator = useSecureRandom ? new SecureRandom() : new Random();
-    }
-
-    public BaseGenerator(long seed) {
-        randomGenerator = new Random(seed);
-    }
-
-    public BaseGenerator(byte[] seed) {
-        randomGenerator = new SecureRandom(seed);
-    }
-
-    public boolean isSecureRandom() {
-        return randomGenerator instanceof SecureRandom;
-    }
-
+    /**
+     * Generates a list of 0 or more values.
+     *
+     * @param count              Number of entries to generate
+     * @param generateValidItems Specifies if valid (<b>true</b>) or invalid (<b>false</b>) data must be generated
+     *
+     * @return A list of values.
+     *
+     * @since 1.0.0
+     */
+    List<S> generateValueList(int count, boolean generateValidItems);
 }
