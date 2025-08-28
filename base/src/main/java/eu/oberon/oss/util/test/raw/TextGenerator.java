@@ -52,7 +52,10 @@ public class TextGenerator {
      * @return
      */
     public String createText(TextGeneratorSettings settings) {
-        int lengthToGenerate = randomGenerator.nextInt(settings.getMaxLength(), settings.getMinLength());
+
+        int lengthToGenerate = settings.getMinLength() != settings.getMaxLength()
+                ? randomGenerator.nextInt(settings.getMinLength(), settings.getMaxLength())
+                : settings.getMaxLength();
 
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < lengthToGenerate; i++) {
@@ -66,6 +69,8 @@ public class TextGenerator {
                     upperCase = settings.getCaseType() == CaseType.UPPER;
                 }
                 sb.append(upperCase ? Character.toUpperCase(c) : Character.toLowerCase(c));
+            } else {
+                sb.append(c);
             }
         }
         return sb.toString();
