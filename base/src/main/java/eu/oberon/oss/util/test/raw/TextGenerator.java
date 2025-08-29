@@ -13,6 +13,7 @@ import java.util.random.RandomGenerator;
  * @author TigerLilly64
  * @since 1.0.0
  */
+@SuppressWarnings("ClassCanBeRecord")
 @Log4j2
 public class TextGenerator {
     private final RandomGenerator randomGenerator;
