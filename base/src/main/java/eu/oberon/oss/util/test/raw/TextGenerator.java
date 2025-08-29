@@ -9,6 +9,18 @@ import java.util.random.RandomGenerator;
 
 /**
  * Generic text data generator
+ * Notes:
+ * <ul>
+ * <li>If {@link TextGeneratorSettings#getMinLength()} returns a different value than
+ * {@link TextGeneratorSettings#getMaxLength()} , a random number will be generated between these to values. The
+ * generated value is provided by the specified randomizer ({@link RandomGenerator#nextInt(int, int)})
+ *
+ * </li>
+ * <li>
+ * If the settings object's {@link TextGeneratorSettings#getCaseType() caseType} is {@literal <null>}, then the
+ * generated characters are passed 'as-is'
+ * </li>
+ * </ul>
  *
  * @author TigerLilly64
  * @since 1.0.0
@@ -17,9 +29,31 @@ import java.util.random.RandomGenerator;
 @Log4j2
 public class TextGenerator {
 
+    /**
+     * String containing alphabetical characters
+     *
+     * @since 1.0.0
+     */
     public static final String ALPHABETICAL = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+    /**
+     * String containing digits
+     *
+     * @since 1.0.0
+     */
     public static final String DIGITS = "0123456789";
+    /**
+     * String containing non-alphabetic characters
+     *
+     * @since 1.0.0
+     */
     public static final String NON_ALPHABETIC = "!@#$%^&*()_+=-{}:<>/?|[];',.\\\"";
+
+    /**
+     * String containing hexadecimal characters
+     *
+     * @since 1.0.0
+     */
     @SuppressWarnings("unused")
     public static final String HEX_CHARACTERS = "0123456789ABCDEF";
 

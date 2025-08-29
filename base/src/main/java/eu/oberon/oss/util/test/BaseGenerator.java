@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Basic generator contract. allows
  *
- * @param <S>
+ * @param <S> The class type of the data objects being generated.
  *
  * @author TigerLilly64
  * @since 1.0.0
