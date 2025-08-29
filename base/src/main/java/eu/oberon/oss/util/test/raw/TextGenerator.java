@@ -16,6 +16,13 @@ import java.util.random.RandomGenerator;
 @SuppressWarnings("ClassCanBeRecord")
 @Log4j2
 public class TextGenerator {
+
+    public static final String ALPHABETICAL = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    public static final String DIGITS = "0123456789";
+    public static final String NON_ALPHABETIC = "!@#$%^&*()_+=-{}:<>/?|[];',.\\\"";
+    @SuppressWarnings("unused")
+    public static final String HEX_CHARACTERS = "0123456789ABCDEF";
+
     private final RandomGenerator randomGenerator;
 
     /**
@@ -45,11 +52,6 @@ public class TextGenerator {
         }
         return List.copyOf(chars);
     }
-
-    public static final String ALPHABETICAL = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    public static final String DIGITS = "0123456789";
-    public static final String HEX_CHARACTERS = "0123456789ABCDEF";
-    public static final String NON_ALPHABETIC = "!@#$%^&*()_+=-{}:<>/?|[];',.\\\"";
 
     /**
      * Returns a builder that can be used to create text generator settings.
