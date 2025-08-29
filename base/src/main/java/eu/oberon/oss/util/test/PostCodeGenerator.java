@@ -7,9 +7,35 @@ import eu.oberon.oss.util.test.raw.TextGeneratorSettings;
 import java.util.ArrayList;
 import java.util.List;
 
-import static eu.oberon.oss.util.test.raw.TextGenerator.ALPHABETICAL;
-import static eu.oberon.oss.util.test.raw.TextGenerator.DIGITS;
+import static eu.oberon.oss.util.test.raw.TextGenerator.*;
 
+/**
+ * Generates Dutch 'postcode' data. The returned postcode will always be formatted like this:
+ * 9999sCC where
+ * <ol>
+ *     <li>9999 - four digits </li>
+ *     <li>s    - a single space</li>
+ *     <li>CC   - Two characters</li>
+ * </ol>
+ * <p>
+ * When valid postcode data is requested, the following applies:
+ * <ol>
+ *     <li>9999 - generated value in range 1000-9999 (inclusive) </li>
+ *     <li>s    - a single space</li>
+ *     <li>CC   - Two characters, in the range AA-ZZ, but excluding SA, SD and SS</li>
+ * </ol>
+ * <p>
+ *  When INVALID postcode data is requested, the generated data can be partially valid (see above), but in addition,
+ *  the generated postcode will include 1 or more of the following invalid data:
+ * <ol>
+ *     <li>9999 - generated value in range 0000-0999 (inclusive) </li>
+ *     <li>s    - single character in the range A-Z, Digits or other characters</li>
+ *     <li>CC   - Two characters, in the range AA-ZZ, Digits or other characters</li>
+ * </ol>
+ *
+ * @author TigerLilly64
+ * @since 1.0.0
+ */
 public class PostCodeGenerator extends AbstractBaseGenerator<String> {
     private final TextGenerator generator;
     private final NLPostalCodeChecker checker = new NLPostalCodeChecker();
@@ -29,10 +55,15 @@ public class PostCodeGenerator extends AbstractBaseGenerator<String> {
                 .build();
         INVALID_CHAR = TextGenerator.getBuilder()
                 .setMaxLength(1)
-                .addCharacterList(" 0123456789!@#$%^&*()_+=-{}:<>/?|\\[];',.").addCharacterList(DIGITS)
+                .addCharacterList(NON_ALPHABETIC).addCharacterList(DIGITS).addCharacterList(ALPHABETICAL)
                 .build();
     }
 
+    /**
+     * Default constructor
+     *
+     * @since 1.0.0
+     */
     public PostCodeGenerator() {
         super(true);
         generator = new TextGenerator(getRandomGenerator());
@@ -55,10 +86,13 @@ public class PostCodeGenerator extends AbstractBaseGenerator<String> {
                 String s1 = getRandomGenerator().nextBoolean()
                         ? generator.createText(INVALID_CHAR)
                         : generator.createText(VALID_FIRST_CHAR);
+                String space = getRandomGenerator().nextBoolean()
+                        ? generator.createText(INVALID_CHAR)
+                        : " ";
                 String s2 = getRandomGenerator().nextBoolean()
                         ? generator.createText(INVALID_CHAR)
                         : generator.createText(VALID_SECOND_CHAR);
-                postCode = String.format("%04d %S%S", number, s1, s2);
+                postCode = String.format("%04d%s%S%S", number, s1, space, s2);
 
             } while (checker.isValid(postCode));
         }
