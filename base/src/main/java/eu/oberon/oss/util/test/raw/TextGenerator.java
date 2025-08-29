@@ -7,10 +7,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.random.RandomGenerator;
 
+/**
+ * Generic text data generator
+ *
+ * @author TigerLilly64
+ * @since 1.0.0
+ */
 @Log4j2
 public class TextGenerator {
     private final RandomGenerator randomGenerator;
 
+    /**
+     * Creates a new generator instance.
+     *
+     * @param randomGenerator the randomizer to be used for generating text data.
+     *
+     * @since 1.0.0
+     */
     public TextGenerator(@NotNull RandomGenerator randomGenerator) {
         this.randomGenerator = randomGenerator;
     }
@@ -38,18 +51,24 @@ public class TextGenerator {
     public static final String NON_ALPHABETIC = "!@#$%^&*()_+=-{}:<>/?|[];',.\\\"";
 
     /**
+     * Returns a builder that can be used to create text generator settings.
      *
-     * @return
+     * @return A builder instance
+     *
+     * @since 1.0.0
      */
     public static TextGeneratorSettingsBuilder getBuilder() {
         return new TextGeneratorSettingsBuilder();
     }
 
     /**
+     * Create textual data according to the specified TextGeneratorSettings.
      *
-     * @param settings
+     * @param settings The settings describing the data to be generated.
      *
-     * @return
+     * @return the generated text data
+     *
+     * @since 1.0.0
      */
     public String createText(TextGeneratorSettings settings) {
 
