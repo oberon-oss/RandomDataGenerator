@@ -35,7 +35,7 @@ public class TextGenerator {
     public static final String ALPHABETICAL = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     public static final String DIGITS = "0123456789";
     public static final String HEX_CHARACTERS = "0123456789ABCDEF";
-
+    public static final String NON_ALPHABETIC = "!@#$%^&*()_+=-{}:<>/?|[];',.\\\"";
 
     /**
      *
