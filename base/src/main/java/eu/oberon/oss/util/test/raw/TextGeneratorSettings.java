@@ -15,7 +15,8 @@ import java.util.List;
 public class TextGeneratorSettings {
     private final int minLength;
     private final int maxLength;
-    private @Nullable
+    @Nullable
+    private
     final CaseType caseType;
     private final List<Character> characterList;
 
