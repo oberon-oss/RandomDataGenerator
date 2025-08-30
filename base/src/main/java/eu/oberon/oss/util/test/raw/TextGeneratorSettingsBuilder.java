@@ -2,7 +2,6 @@ package eu.oberon.oss.util.test.raw;
 
 import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.extern.java.Log;
 import lombok.extern.log4j.Log4j2;
 
 /**
