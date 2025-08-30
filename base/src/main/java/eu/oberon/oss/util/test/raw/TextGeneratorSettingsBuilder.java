@@ -35,6 +35,9 @@ public class TextGeneratorSettingsBuilder {
      */
     public TextGeneratorSettingsBuilder setMinLength(int minLength) {
         this.minLength = minLength;
+        if (maxLength == -1) {
+            maxLength = minLength;
+        }
         return this;
     }
 
@@ -71,7 +74,7 @@ public class TextGeneratorSettingsBuilder {
 
     /**
      * Adds the characters from the character list to the builder.
-
+     *
      * @param characterList String containing the characters to be added.
      *
      * @return The builder instance.
@@ -79,7 +82,7 @@ public class TextGeneratorSettingsBuilder {
      * @since 1.0.0
      */
     public TextGeneratorSettingsBuilder addCharacterList(String characterList) {
-        if (characterList != null && characterList.length() > 0) {
+        if (characterList != null && !characterList.isEmpty()) {
             stringBuilder.append(characterList);
         }
         return this;
