@@ -54,4 +54,17 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/oberon-oss/RandomDataGenerator</url>
+        </repository>
+        <snapshotRepository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/oberon-oss/RandomDataGenerator</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
