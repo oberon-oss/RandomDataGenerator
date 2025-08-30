@@ -45,15 +45,15 @@ public class PostCodeGenerator extends AbstractBaseGenerator<String> {
     private static final TextGeneratorSettings INVALID_CHAR;
 
     static {
-        VALID_FIRST_CHAR = TextGenerator.getBuilder()
+        VALID_FIRST_CHAR = TextGeneratorSettings.getBuilder()
                 .setMaxLength(1)
                 .addCharacterList(ALPHABETICAL)
                 .build();
-        VALID_SECOND_CHAR = TextGenerator.getBuilder()
+        VALID_SECOND_CHAR = TextGeneratorSettings.getBuilder()
                 .setMaxLength(1)
                 .addCharacterList(ALPHABETICAL.replaceAll("[ADS]", ""))
                 .build();
-        INVALID_CHAR = TextGenerator.getBuilder()
+        INVALID_CHAR = TextGeneratorSettings.getBuilder()
                 .setMaxLength(1)
                 .addCharacterList(NON_ALPHABETIC).addCharacterList(DIGITS).addCharacterList(ALPHABETICAL)
                 .build();

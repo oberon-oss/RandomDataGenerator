@@ -66,6 +66,17 @@ public class TextGeneratorSettings {
         return characterList;
     }
 
+    /**
+     * Returns a builder that can be used to create text generator settings.
+     *
+     * @return A builder instance
+     *
+     * @since 1.0.0
+     */
+    public static TextGeneratorSettingsBuilder getBuilder() {
+        return new TextGeneratorSettingsBuilder();
+    }
+
 
     /**
      * Constructs a settings instance form the provided builder instance.

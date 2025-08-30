@@ -14,7 +14,6 @@ import java.util.random.RandomGenerator;
  * <li>If {@link TextGeneratorSettings#getMinLength()} returns a different value than
  * {@link TextGeneratorSettings#getMaxLength()} , a random number will be generated between these to values. The
  * generated value is provided by the specified randomizer ({@link RandomGenerator#nextInt(int, int)})
- *
  * </li>
  * <li>
  * If the settings object's {@link TextGeneratorSettings#getCaseType() caseType} is {@literal <null>}, then the
@@ -85,17 +84,6 @@ public class TextGenerator {
             chars.add(c);
         }
         return List.copyOf(chars);
-    }
-
-    /**
-     * Returns a builder that can be used to create text generator settings.
-     *
-     * @return A builder instance
-     *
-     * @since 1.0.0
-     */
-    public static TextGeneratorSettingsBuilder getBuilder() {
-        return new TextGeneratorSettingsBuilder();
     }
 
     /**
