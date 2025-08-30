@@ -45,7 +45,7 @@ public abstract class AbstractBaseGenerator<S> implements BaseGenerator<S> {
      *
      * @since 1.0.0
      */
-    @SuppressWarnings(" ") // The generator is used to create random and has no security related meaning
+    @SuppressWarnings("java:S2245") // The generator is used to create random and has no security related meaning
     protected AbstractBaseGenerator(boolean useSecureRandom) {
         this.randomGenerator = useSecureRandom ? new SecureRandom() : new Random();
     }
