@@ -9,11 +9,14 @@ import lombok.Getter;
  * @author TigerLilly64
  * @since 1.0.0
  */
+@SuppressWarnings("UnusedReturnValue")
 @Getter(value = AccessLevel.PACKAGE)
 public class TextGeneratorSettingsBuilder {
     private int minLength = -1;
     private int maxLength = -1;
     private CaseType caseType = null;
+
+    @SuppressWarnings("MismatchedQueryAndUpdateOfStringBuilder") // used by constructor in TextGeneratorSettings
     private final StringBuilder stringBuilder = new StringBuilder();
 
     /**
