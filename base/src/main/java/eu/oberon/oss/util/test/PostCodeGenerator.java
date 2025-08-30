@@ -71,33 +71,36 @@ public class PostCodeGenerator extends AbstractBaseGenerator<String> {
 
     @Override
     public String generateSingleValue(boolean generateValidItem) {
-        String postCode;
-        if (generateValidItem) {
-            postCode = String.format("%04d %S%S",
-                    getRandomGenerator().nextInt(1000, 9999),
-                    generator.createText(VALID_FIRST_CHAR),
-                    generator.createText(VALID_SECOND_CHAR)
-            );
-        } else {
-            do {
-                int number = getRandomGenerator().nextBoolean()
-                        ? getRandomGenerator().nextInt(1000, 9999)
-                        : getRandomGenerator().nextInt(0, 999);
-                String s1 = getRandomGenerator().nextBoolean()
-                        ? generator.createText(INVALID_CHAR)
-                        : generator.createText(VALID_FIRST_CHAR);
-                String space = getRandomGenerator().nextBoolean()
-                        ? generator.createText(INVALID_CHAR)
-                        : " ";
-                String s2 = getRandomGenerator().nextBoolean()
-                        ? generator.createText(INVALID_CHAR)
-                        : generator.createText(VALID_SECOND_CHAR);
-                postCode = String.format("%04d%s%S%S", number, s1, space, s2);
+        return generateValidItem ? generateValidValue() : generateInvalidValue();
+    }
 
-            } while (checker.isValid(postCode));
-        }
+    private String generateInvalidValue() {
+        String work;
+        do {
+            int number = getRandomGenerator().nextBoolean()
+                    ? getRandomGenerator().nextInt(1000, 9999)
+                    : getRandomGenerator().nextInt(0, 999);
+            String s1 = getRandomGenerator().nextBoolean()
+                    ? generator.createText(INVALID_CHAR)
+                    : generator.createText(VALID_FIRST_CHAR);
+            String space = getRandomGenerator().nextBoolean()
+                    ? generator.createText(INVALID_CHAR)
+                    : " ";
+            String s2 = getRandomGenerator().nextBoolean()
+                    ? generator.createText(INVALID_CHAR)
+                    : generator.createText(VALID_SECOND_CHAR);
+            work = String.format("%04d%s%S%S", number, s1, space, s2);
 
-        return postCode;
+        } while (checker.isValid(work));
+        return work;
+    }
+
+    private String generateValidValue() {
+        return String.format("%04d %S%S",
+                getRandomGenerator().nextInt(1000, 9999),
+                generator.createText(VALID_FIRST_CHAR),
+                generator.createText(VALID_SECOND_CHAR)
+        );
     }
 
     @Override
