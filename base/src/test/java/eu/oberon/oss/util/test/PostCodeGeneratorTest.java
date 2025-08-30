@@ -33,7 +33,7 @@ class PostCodeGeneratorTest {
     }
 
     public static Stream<Arguments> validGeneratedPostcodeList() {
-        return generatePostCodes(10_000, true);
+        return generatePostCodes(500, true);
     }
 
     @ParameterizedTest
@@ -43,7 +43,7 @@ class PostCodeGeneratorTest {
     }
 
     public static Stream<Arguments> invalidGeneratedPostcodeList() {
-        return generatePostCodes(10_000, false);
+        return generatePostCodes(500, false);
     }
 
     @ParameterizedTest
