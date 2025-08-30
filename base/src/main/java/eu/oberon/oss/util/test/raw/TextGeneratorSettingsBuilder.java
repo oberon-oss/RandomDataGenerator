@@ -2,6 +2,8 @@ package eu.oberon.oss.util.test.raw;
 
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 
 /**
  * Builder to create {@link TextGeneratorSettings} objects.
@@ -11,6 +13,7 @@ import lombok.Getter;
  */
 @SuppressWarnings("UnusedReturnValue")
 @Getter(value = AccessLevel.PACKAGE)
+@Log4j2
 public class TextGeneratorSettingsBuilder {
     private int minLength = -1;
     private int maxLength = -1;
@@ -78,7 +81,8 @@ public class TextGeneratorSettingsBuilder {
     /**
      * Adds the characters from the character list to the builder.
      *
-     * @param characterList String containing the characters to be added.
+     * @param characterList String containing the characters to be added. If the provided String is empty on
+     *                      {@literal <null>}, a warning message will be emitted to the log.
      *
      * @return The builder instance.
      *
@@ -87,6 +91,8 @@ public class TextGeneratorSettingsBuilder {
     public TextGeneratorSettingsBuilder addCharacterList(String characterList) {
         if (characterList != null && !characterList.isEmpty()) {
             stringBuilder.append(characterList);
+        } else {
+            LOGGER.warn("Parameter characterList: cannot be {}", characterList == null ? "<null>" : "empty");
         }
         return this;
     }
