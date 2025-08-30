@@ -16,7 +16,7 @@ class TextGeneratorSettingsBuilderTest {
     @BeforeEach
     void setUp() {
         builder = TextGeneratorSettings.getBuilder();
-        logCaptor = LogCaptor.forClass(TextGeneratorSettingsBuilderTest.class);
+        logCaptor = LogCaptor.forClass(TextGeneratorSettingsBuilder.class);
     }
 
     @Test
