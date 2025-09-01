@@ -1,6 +1,7 @@
 package eu.oberon.oss.util.test;
 
 import eu.oberon.oss.tools.validators.proofs.AvailableElevenProofs;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -12,6 +13,13 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BSNGeneratorTest {
+    @Test
+    void testBounds() {
+        ElevenProofGenerator<String,Integer> generator = new BSNGenerator();
+
+        assertEquals(BSNGenerator.MINIMUM_BSN_NUMBER,generator.getLowerBound());
+        assertEquals(BSNGenerator.MAXIMUM_BSN_NUMBER,generator.getUpperBound());
+    }
 
     static Stream<Arguments> bsnNumberList() {
         List<Arguments> list = new ArrayList<>();
